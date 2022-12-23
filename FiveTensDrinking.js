@@ -13,6 +13,22 @@ function HowToPlay() {
     return 'Start';
   }}
 
+//Add player name and win/loss record
+function playerSetUp() {
+  let name = prompt("What's your name, friend?");
+  let answer = prompt("Your name is " + name + "? <y/n>");
+  if (answer !== "Y" || answer !== "y") {
+    return playerSetUp();
+  }
+
+  let player = {
+    "Name": name,
+    "Wins":0,
+    "Losses":0
+  }
+  return player;
+};
+
 //Player's move during play
 function playersMove() {
     let move = prompt('Throw 0 or 5?');
