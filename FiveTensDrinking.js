@@ -11,7 +11,8 @@ function HowToPlay() {
     return HowToPlay();
   } else {
     return 'Start';
-  }}
+  }
+  };
 
 //Add player name and win/loss record
 function playerSetUp() {
@@ -33,11 +34,11 @@ let player = {
   "Losses":0
 }
 return player;
-};
+  };
 
 //Player's move during play
 function playersMove() {
-    let move = prompt('Throw 0 or 5?');
+    let move = prompt('Throw 0 or 5? ');
     if (move == 0 || move == 5) {
       return move
     } else {
@@ -48,7 +49,7 @@ function playersMove() {
 
 //Player's move during turn
 function playerTurn() {
-    let guess = prompt('What\'s your guess?');
+    let guess = prompt('What\'s your guess? ');
     if (guess % 5 == 0) {
       return guess;
     } else {
@@ -239,7 +240,7 @@ function round2(array, playerName) {
         if (sum == guess) {
           console.log('Player2 wins the round!');
           console.log('Player3 drinks!');
-          let loser = 'player3'
+          let loser = 'player3';
           return loser;
         } else {
           console.log('No winner... \n');
@@ -268,45 +269,49 @@ function round2(array, playerName) {
           }
         }
       }
-    };
+  };
 
 //Game control flow
 function FiveTensDrinking() {
-  let x = prompt('Do you know how to play? <y/n>');
+  let x = prompt('Do you know how to play? <y/n> ');
+
   //play instruction
   if (x === 'n') {
-    start = HowToPlay();
+    HowToPlay();
   } else {
-    start = 'Start';
-  };
-  //Create player profile
-  let player = playerSetUp();
-  //start game
-  if (start === 'Start') {
-    // Round 1
-    console.log('Round 1')
-    console.log('You go first. \n');
-    let players = round1(player.Name, player.Name);
-    // Round 2
-    console.log('Round 2');
-    let loser = round2(players, player.Name);
-    // Play again?
-    if (loser === player.Name) {
-      player.Losses++;
-    } else {
-      player.Wins++;
-    }
-    console.log(`${player.Name}`)
-    console.log(`Wins: ${player.Wins}`);
-    console.log(`Losses: ${player.Losses}\n`)
+    let player = playerSetUp();
 
-    let again = prompt('Play again? <y/n>');
+  //start game
+  function game(playerName, playerWins, playerLosses) {
+    // Round 1
+    console.log('\nRound 1')
+    console.log('You go first. \n');
+    let players = round1(playerName, playerName);
+
+    // Round 2
+    console.log('\nRound 2');
+    let loser = round2(players, playerName);
+
+    // Play again?
+    if (loser === playerName) {
+      playerLosses++;
+    } else {
+      playerWins++;
+    }
+
+    console.log(`${playerName}`)
+    console.log(`Wins: ${playerWins}`);
+    console.log(`Losses: ${playerLosses}\n`)
+
+    let again = prompt('Play again? <y/n> ');
     if (again === 'y') {
-      return FiveTensDrinking();
+      return game(playerName, playerWins, playerLosses);
     } else {
       return 'Thanks for playing!';
-    }    
+    }  
+  };
+  game(player.Name, player.Wins, player.Losses);
   }
-};
+  };
 
 console.log(FiveTensDrinking());

@@ -20,11 +20,14 @@ George is the last man standing and takes a shot.
 
 Bugs:
 -AI logic sometimes guesses 0 then throws 5... 
--play again feature returns the entire program, not just the game. 
--player scores are reinvented during "play again". 
--play again recreates player profile.
+-player name is 'undefinded in round 2 when player2 guesses'
+-No ability to quit during play
+-play again "no" has no exit message
 
 Recent improvements/updates: 
 -added third player 
 -added instructions 
 -added player creation
+-player scores are reinvented during "play again"
+-play again feature returns the entire program, not just the game
+-play again recreates player profile
