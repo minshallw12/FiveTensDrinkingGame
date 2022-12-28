@@ -15,18 +15,24 @@ function HowToPlay() {
 
 //Add player name and win/loss record
 function playerSetUp() {
-  let name = prompt("What's your name, friend?");
-  let answer = prompt("Your name is " + name + "? <y/n>");
-  if (answer !== "Y" || answer !== "y") {
-    return playerSetUp();
-  }
 
-  let player = {
-    "Name": name,
-    "Wins":0,
-    "Losses":0
+  function nameScript() {
+  let name = prompt("What is your name? ")
+  let answer = prompt("Your name is " + name + "? <y/n> ");
+  if (answer === "Y" || answer === "y") {
+    return name;
+  } else {
+    return nameScript();
   }
-  return player;
+};
+
+let playerName = nameScript();
+let player = {
+  "Name":playerName,
+  "Wins":0,
+  "Losses":0
+}
+return player;
 };
 
 //Player's move during play
@@ -51,7 +57,7 @@ function playerTurn() {
     }
   };
 
-//Computer's move during play
+//Computer's  AI move during play
 function computerMove() {
     let random = Math.round(Math.random());
     if (random === 1) {
@@ -61,7 +67,7 @@ function computerMove() {
     }
   };
 
-//Computer's move during turn
+//Computer's AI move during guess
 function computerTurn(numOfPlayers) {
     if (numOfPlayers === 3) {
       let random = Math.floor(Math.random()*4)+1;
@@ -92,16 +98,16 @@ function computerTurn(numOfPlayers) {
       }
   };
 
-//play a round with 3 players
-function round1(whosfirst) {
-    let players = ['player1', 'player2', 'player3'];
+//first round with 3 players
+function round1(whosfirst, playerName) {
+    let players = [playerName, 'player2', 'player3'];
     let winner = '';
     
-    if (whosfirst === 'player1') {
+    if (whosfirst === playerName) {
         let guess = playerTurn();
       console.log('You guess ' + guess + '.');
         let player1 = playersMove();
-      console.log('Player1 throws ' + player1 + '.');
+      console.log(`${playerName} throws ${player1}.`);
         let player2 = computerMove();
       console.log('Player2 throws ' + player2 + '.');
         let player3 = computerMove();
@@ -109,7 +115,7 @@ function round1(whosfirst) {
         let sum = parseInt(player1)+parseInt(player2)+parseInt(player3);
       console.log('The total is ' + sum + '.');
         if (sum == guess) {
-          console.log(whosfirst+' wins the round!');
+          console.log(whosfirst+' wins the round!\n');
           winner = whosfirst;
           players.splice(players.indexOf(winner),1)
             //console.log(players)
@@ -123,7 +129,7 @@ function round1(whosfirst) {
     if (whosfirst === 'player2') {
       console.log('Player2 is guessing... ')
         let player1 = playersMove();
-          console.log('Player1 throws ' + player1 + '.');
+          console.log(`${playerName} throws ${player1}.`);
         let guess = computerTurn(3);
           console.log('Player2 guesses ' + guess + '.');
         let player2 = computerMove();
@@ -133,7 +139,7 @@ function round1(whosfirst) {
         let sum = parseInt(player1)+parseInt(player2)+parseInt(player3);
           console.log('The total is ' + sum + '.');
         if (sum == guess) {
-          console.log(whosfirst+' wins the round!');
+          console.log(whosfirst+' wins the round!\n');
           winner = whosfirst;
           players.splice(players.indexOf(winner), 1);
             //console.log(players);
@@ -147,7 +153,7 @@ function round1(whosfirst) {
     if (whosfirst === 'player3') {
       console.log('Player3 is guessing... ')
         let player1 = playersMove();
-          console.log('Player1 throws ' + player1 + '.')
+          console.log(`${playerName} throws ${player1}.`)
         let guess = computerTurn(3);
           console.log('Player3 guesses ' + guess + '.')
         let player2 = computerMove();
@@ -165,30 +171,32 @@ function round1(whosfirst) {
           return [players[0], human];
         } else {
           console.log('No winner... \n')
-          return round1('player1');
+          return round1(playerName);
           }
         };
   };
 
-//play a round with 2 players
-function round2(array) {
+//second round with 2 players
+function round2(array, playerName) {
     let whosfirst = array[0];
     let human = array[1];
     if(human === 'y') {
-      let players = ['player1', 'player2'];
+      let players = [playerName, 'player2'];
     
-      if (whosfirst === 'player1') {
+      if (whosfirst === playerName) {
         let guess = playerTurn();
           console.log('You guessed ' + guess + '.')
         let player1 = playersMove();
-          console.log('Player1 throws ' + player1 + '.')
+          console.log(`${playerName} throws ${player1}.`)
         let player2 = computerMove();
           console.log('Player2 throws ' + player2 + '.')
         let sum = parseInt(player1)+parseInt(player2);
           console.log('The total is ' + sum + '. \n')
         if (sum == guess) {
-          console.log('Player1 wins the round!');
+          console.log(`${playerName} wins the round!`);
           console.log('Player2 drinks!')
+          let loser = 'player2';
+          return loser;
         } else {
           console.log('No winner... \n');
           return round2(['player2', 'y']);
@@ -197,7 +205,7 @@ function round2(array) {
         
       if (whosfirst === 'player2') {
         let player1 = playersMove();
-          console.log('Player1 throws ' + player1 + '.')
+          console.log(`${playerName} throws ${player1}.`)
         let guess = computerTurn(2);
           console.log('Player2 guesses ' + guess + '.')
         let player2 = computerMove();
@@ -206,16 +214,18 @@ function round2(array) {
           console.log('The total is ' + sum + '. /n')
         if (sum == guess) {
           console.log('Player2 wins the round!');
-          console.log('Player1 drinks!');
+          console.log(`${playerName} drinks!`);
+          let loser = playerName;
+          return loser;
         } else {
           console.log('No winner... \n');
-          return round2(['player1', 'y']);
+          return round2([playerName, 'y']);
       }
   };
     }
     if (human === 'n') {
       let players = ['player2', 'player3'];
-
+      
       if (whosfirst === 'player2') {
         console.log('Player2 is guessing...');
         let guess = computerTurn(2);
@@ -229,6 +239,8 @@ function round2(array) {
         if (sum == guess) {
           console.log('Player2 wins the round!');
           console.log('Player3 drinks!');
+          let loser = 'player3'
+          return loser;
         } else {
           console.log('No winner... \n');
           return round2(['player3', 'n']);
@@ -248,6 +260,8 @@ function round2(array) {
         if (sum == guess) {
           console.log('Player3 wins the round!');
           console.log('Player2 drinks!');
+          let loser = 'player2';
+          return loser;
         } else {
           console.log('No winner... \n');
           return round2(['player2', 'n']);
@@ -265,16 +279,27 @@ function FiveTensDrinking() {
   } else {
     start = 'Start';
   };
+  //Create player profile
+  let player = playerSetUp();
   //start game
   if (start === 'Start') {
     // Round 1
     console.log('Round 1')
     console.log('You go first. \n');
-    let players = round1('player1');
+    let players = round1(player.Name, player.Name);
     // Round 2
     console.log('Round 2');
-    round2(players);
+    let loser = round2(players, player.Name);
     // Play again?
+    if (loser === player.Name) {
+      player.Losses++;
+    } else {
+      player.Wins++;
+    }
+    console.log(`${player.Name}`)
+    console.log(`Wins: ${player.Wins}`);
+    console.log(`Losses: ${player.Losses}\n`)
+
     let again = prompt('Play again? <y/n>');
     if (again === 'y') {
       return FiveTensDrinking();
@@ -283,3 +308,5 @@ function FiveTensDrinking() {
     }    
   }
 };
+
+console.log(FiveTensDrinking());
