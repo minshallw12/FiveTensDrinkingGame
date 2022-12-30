@@ -124,7 +124,7 @@ function round1(whosfirst, playerName) {
           return [players[0], human];
         } else {
           console.log('No winner... \n');
-          return round1('player2');
+          return round1('player2', playerName);
         }
     }
     if (whosfirst === 'player2') {
@@ -148,7 +148,7 @@ function round1(whosfirst, playerName) {
           return [players[0], human];
         } else {
           console.log('No winner... \n');
-          return round1('player3');
+          return round1('player3', playerName);
           }
     };
     if (whosfirst === 'player3') {
@@ -172,55 +172,55 @@ function round1(whosfirst, playerName) {
           return [players[0], human];
         } else {
           console.log('No winner... \n')
-          return round1(playerName);
+          return round1(playerName, playerName);
           }
         };
   };
 
 //second round with 2 players
-function round2(array, playerName) {
+function round2(array, userName) {
     let whosfirst = array[0];
     let human = array[1];
-    if(human === 'y') {
-      let players = [playerName, 'player2'];
+    if (human === 'y') {
+      let players = [userName, 'player2'];
     
-      if (whosfirst === playerName) {
+      if (whosfirst === userName) {
         let guess = playerTurn();
           console.log('You guessed ' + guess + '.')
         let player1 = playersMove();
-          console.log(`${playerName} throws ${player1}.`)
+          console.log(`${userName} throws ${player1}.`)
         let player2 = computerMove();
           console.log('Player2 throws ' + player2 + '.')
         let sum = parseInt(player1)+parseInt(player2);
           console.log('The total is ' + sum + '. \n')
         if (sum == guess) {
-          console.log(`${playerName} wins the round!`);
-          console.log('Player2 drinks!')
+          console.log(`${userName} wins the round!`);
+          console.log('Player2 drinks! \n')
           let loser = 'player2';
           return loser;
         } else {
           console.log('No winner... \n');
-          return round2(['player2', 'y']);
+          return round2(['player2', 'y'],userName);
         }
       };
         
       if (whosfirst === 'player2') {
         let player1 = playersMove();
-          console.log(`${playerName} throws ${player1}.`)
+          console.log(`${userName} throws ${player1}.`)
         let guess = computerTurn(2);
           console.log('Player2 guesses ' + guess + '.')
         let player2 = computerMove();
           console.log('Player2 throws ' + player2 + '.')
         let sum = parseInt(player1)+parseInt(player2);
-          console.log('The total is ' + sum + '. /n')
+          console.log('The total is ' + sum + '. \n')
         if (sum == guess) {
           console.log('Player2 wins the round!');
-          console.log(`${playerName} drinks!`);
-          let loser = playerName;
+          console.log(`${userName} drinks! \n`);
+          let loser = userName;
           return loser;
         } else {
           console.log('No winner... \n');
-          return round2([playerName, 'y']);
+          return round2([userName, 'y'], userName);
       }
   };
     }
@@ -239,12 +239,12 @@ function round2(array, playerName) {
           console.log('The total is ' + sum + '. \n');
         if (sum == guess) {
           console.log('Player2 wins the round!');
-          console.log('Player3 drinks!');
+          console.log('Player3 drinks! \n');
           let loser = 'player3';
           return loser;
         } else {
           console.log('No winner... \n');
-          return round2(['player3', 'n']);
+          return round2(['player3', 'n'], userName);
         }
       };
       
@@ -260,12 +260,12 @@ function round2(array, playerName) {
           console.log('The total is ' + sum + '. \n');
         if (sum == guess) {
           console.log('Player3 wins the round!');
-          console.log('Player2 drinks!');
+          console.log('Player2 drinks! \n');
           let loser = 'player2';
           return loser;
         } else {
           console.log('No winner... \n');
-          return round2(['player2', 'n']);
+          return round2(['player2', 'n'], userName);
           }
         }
       }

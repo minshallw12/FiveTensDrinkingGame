@@ -20,7 +20,6 @@ George is the last man standing and takes a shot.
 
 Bugs:
 -AI logic sometimes guesses 0 then throws 5... 
--player name is 'undefinded in round 2 when player2 guesses'
 -No ability to quit during play
 -play again "no" has no exit message
 
@@ -31,3 +30,9 @@ Recent improvements/updates:
 -player scores are reinvented during "play again"
 -play again feature returns the entire program, not just the game
 -play again recreates player profile
+-round1 player2 guessing says 'undefined' instead of user name.
+-round1 player3 guessing says 'undefined' instead of user name.
+-player2 wins round1 then skips to scorecard
+
+Other Notes:
+-flow successful if player wins round 1 and player2 drinks or player 3drinks
