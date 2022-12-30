@@ -21,7 +21,8 @@ George is the last man standing and takes a shot.
 Bugs:
 -AI logic sometimes guesses 0 then throws 5... 
 -No ability to quit during play
--play again "no" has no exit message
+-spacing formatting issues "playerX wins the round!"
+
 
 Recent improvements/updates: 
 -added third player 
@@ -33,6 +34,4 @@ Recent improvements/updates:
 -round1 player2 guessing says 'undefined' instead of user name.
 -round1 player3 guessing says 'undefined' instead of user name.
 -player2 wins round1 then skips to scorecard
-
-Other Notes:
--flow successful if player wins round 1 and player2 drinks or player 3drinks
+-play again "no" has no exit message

@@ -162,7 +162,7 @@ function round1(whosfirst, playerName) {
         let player3 = computerMove();
           console.log('Player3 throws ' + player3 + '.')
         let sum = parseInt(player1)+parseInt(player2)+parseInt(player3);
-         console.log('The total is ' + sum + '.')
+         console.log('The total is ' + sum + '. \n')
         if (sum == guess) {
           console.log(whosfirst+' wins the round!');
           winner = whosfirst;
@@ -307,7 +307,8 @@ function FiveTensDrinking() {
     if (again === 'y') {
       return game(playerName, playerWins, playerLosses);
     } else {
-      return 'Thanks for playing!';
+      console.log('Thanks for playing!')
+      return null;
     }  
   };
   game(player.Name, player.Wins, player.Losses);
