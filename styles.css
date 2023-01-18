@@ -1,0 +1,37 @@
+body {
+    background-color: lightgrey;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    border: solid thin black
+}
+#container2 {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border: solid thin black
+}
+
+.players {
+    height: 300px;
+    width: 300px;
+}
+
+#guessIt {
+    display: flex;
+    justify-content: left;
+    margin: 30px;
+}
+
+#scoreIt {
+    display: flex;
+    justify-content: right;
+    margin: 30px;
+}
