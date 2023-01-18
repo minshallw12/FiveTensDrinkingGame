@@ -20,18 +20,24 @@ h1 {
 }
 
 .players {
+    display: flex;
     height: 300px;
     width: 300px;
+    justify-content: center;
 }
 
 #guessIt {
-    display: flex;
+    display: inline-flex;
     justify-content: left;
     margin: 30px;
 }
 
 #scoreIt {
-    display: flex;
+    display: inline-block;
     justify-content: right;
     margin: 30px;
+}
+
+#score {
+    margin: 10px;
 }
