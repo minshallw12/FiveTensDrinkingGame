@@ -1,5 +1,7 @@
 body {
-    background-color: lightgrey;
+    color: white;
+    background-image: url("./assets/background.jpg");
+
 }
 
 h1 {
@@ -36,8 +38,8 @@ h1 {
 }
 
 #scoreIt {
-    display: inline-block;
-    justify-content: right;
+    display: inline;
+    justify-content: center;
     margin: 30px;
     border: 2px dotted red
 }
@@ -70,4 +72,20 @@ h1 {
     height: 500px;
     align-items: center;
 
+}
+
+.bottomrow {
+    border: darkcyan dotted 3px;
+    display: flex;
+    justify-content: center;
+}
+
+.scorebox {
+    display: flex;
+    border: dotted 2px grey
+
+}
+.btn {
+    display: flex;
+    justify-content: center;
 }
