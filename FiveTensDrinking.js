@@ -3,7 +3,7 @@ const prompt=require("prompt-sync")({sigint:true});
 
 // Player instructions 
 function HowToPlay() {
-    console.log('--Five Tens Drinking Game-- \n\n- The goal is to guess the total of all players.\n- Round starts with player1. \n- The goal is to guess the total of all players. \n- Each player throws a 0 (closed fist) or 5 (open fist). \n- If player1 guesses correctly, he or she is eliminated. \n- If the guess is incorrect, the turn passes to the next player.\n- The last player standing takes a shot! \n')
+  console.log('--Five Tens Drinking Game-- \n\n- The goal is to guess the total of all players.\n- Round starts with player1. \n- The goal is to guess the total of all players. \n- Each player throws a 0 (closed fist) or 5 (open fist). \n- If player1 guesses correctly, he or she is eliminated. \n- If the guess is incorrect, the turn passes to the next player.\n- The last player standing takes a shot! \n')
   
   let answer = prompt('Do you understand? <y/n>');
   if (answer === 'n') {
@@ -308,7 +308,7 @@ function FiveTensDrinking() {
       return game(playerName, playerWins, playerLosses);
     } else {
       console.log('Thanks for playing!')
-      return null;
+      return;
     }  
   };
   game(player.Name, player.Wins, player.Losses);

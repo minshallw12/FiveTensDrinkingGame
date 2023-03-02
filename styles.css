@@ -10,34 +10,64 @@ h1 {
 #container {
     display: flex;
     justify-content: center;
-    border: solid thin black
+    border: solid thick black
 }
 #container2 {
     display: flex;
-    justify-content: center;
     padding: 20px;
-    border: solid thin black
+    border: solid thin green;
+    flex-direction:column
 }
 
 .players {
     display: flex;
     height: 300px;
     width: 300px;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    border: 2px dotted purple;
 }
 
 #guessIt {
     display: inline-flex;
     justify-content: left;
     margin: 30px;
+    border: 2px dotted yellow;
 }
 
 #scoreIt {
     display: inline-block;
     justify-content: right;
     margin: 30px;
+    border: 2px dotted red
 }
 
 #score {
     margin: 10px;
+}
+
+#prompt {
+    border: 2px solid orange;
+    display: flex;
+    justify-content: center;
+    height: 50px;
+
+}
+
+.display {
+    border: 2px dotted pink;
+}
+
+.hand, .name {
+    display:flex;
+    border: solid thick pink;
+    justify-content: center;
+
+}
+
+.hand {
+    display: flex;
+    height: 500px;
+    align-items: center;
+
 }
