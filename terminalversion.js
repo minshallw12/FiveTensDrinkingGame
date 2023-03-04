@@ -1,4 +1,3 @@
-
 const prompt=require("prompt-sync")({sigint:true}); 
 
 // Player instructions 
@@ -14,7 +13,7 @@ function HowToPlay() {
   }
   };
 
-//Add player name and win/loss record
+// Add player name and win/loss record
 function playerSetUp() {
 
   function nameScript() {
@@ -36,7 +35,7 @@ let player = {
 return player;
   };
 
-//Player's move during play
+//Players move during play
 function playersMove() {
     let move = prompt('Throw 0 or 5? ');
     if (move == 0 || move == 5) {
@@ -47,7 +46,7 @@ function playersMove() {
     }
   };
 
-//Player's move during turn
+//Players move during turn
 function playerTurn() {
     let guess = prompt('What\'s your guess? ');
     if (guess % 5 == 0) {
@@ -58,7 +57,7 @@ function playerTurn() {
     }
   };
 
-//Computer's  AI move during play
+//Computers  AI move during play
 function computerMove() {
     let random = Math.round(Math.random());
     if (random === 1) {
@@ -68,7 +67,7 @@ function computerMove() {
     }
   };
 
-//Computer's AI move during guess
+//Computers AI move during guess
 function computerTurn(numOfPlayers) {
     if (numOfPlayers === 3) {
       let random = Math.floor(Math.random()*4)+1;
